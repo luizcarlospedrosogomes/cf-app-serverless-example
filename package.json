@@ -1,10 +1,49 @@
 {
   "name": "managed-html5-runtime-basic-mta",
+  "version": "1.0.0",
   "dependencies": {
-    "mbt": "^1.2.7"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "awesome-react-icons": "^1.4.8",
+    "mbt": "^1.2.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-minimal-side-navigation": "^1.9.2",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.0",
+    "tailwindcss": "1.9.6",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build": "mbt build"
+    "build:mta": "mbt build",
+    "start": "react-scripts start",
+    "build": "react-scripts build && npm run copy && npm run replace",
+    "test": "react-scripts test",
+    "watch:css": "postcss src/styles/main.css -o src/styles/main.bundle.css",
+    "eject": "react-scripts eject",
+    "copy": "copyfiles --up 1 ./build/**/* HTML5Module",
+    "replace": "copyfiles --up 1 forReplace/manifest.json HTML5Module"
   },
-  "version": "1.0.0"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  }
 }
